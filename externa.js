@@ -68,6 +68,7 @@ function showEmpty(){
             visible++;
         }
     }
+
     if(visible === 0){
         emptyState.classList.remove("hidden");
     } else {
