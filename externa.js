@@ -30,12 +30,16 @@ emptyState.classList.add("hidden");
 // ================= ACTIVE TAB FUNCTION =================
 
 function setActiveTab(button){
+    // Remove active classes from all buttons
     for(let i = 0; i < tabButtons.length; i++){
-        tabButtons[i].classList.remove("activeTab");
+        tabButtons[i].classList.remove('bg-blue-500', 'text-white');
+        tabButtons[i].classList.add('bg-white', 'text-black', 'shadow-sm');
     }
-    button.classList.add("activeTab");
-}
 
+    // Add active class to clicked button
+    button.classList.remove('bg-white', 'text-black', 'shadow-sm');
+    button.classList.add('bg-blue-500', 'text-white');
+}
 // ================= UPDATE COUNT =================
 
 function updateCounts(){
@@ -115,7 +119,8 @@ for(let i = 0; i < interviewBtns.length; i++){
         if(currentStatus !== "interview"){
             card.setAttribute("data-status", "interview");
             statusBtn.textContent = "INTERVIEW";
-            statusBtn.style.backgroundColor = "#DCFCE7";
+            statusBtn.classList.remove('bg-red-100'); // if any previous color
+            statusBtn.classList.add('bg-green-100');
 
             interview++;
             if(currentStatus === "rejected"){
@@ -125,7 +130,7 @@ for(let i = 0; i < interviewBtns.length; i++){
 
         updateCounts();
         filterTab("interview");
-        setActiveTab(interviewTab); // ✅ color update
+        setActiveTab(interviewTab); // active top tab
     });
 }
 
@@ -142,7 +147,8 @@ for(let i = 0; i < rejectedBtns.length; i++){
         if(currentStatus !== "rejected"){
             card.setAttribute("data-status", "rejected");
             statusBtn.textContent = "REJECTED";
-            statusBtn.style.backgroundColor = "#FEE2E2";
+            statusBtn.classList.remove('bg-green-100'); // remove green if any
+            statusBtn.classList.add('bg-red-100');
 
             rejected++;
             if(currentStatus === "interview"){
@@ -152,7 +158,7 @@ for(let i = 0; i < rejectedBtns.length; i++){
 
         updateCounts();
         filterTab("rejected");
-        setActiveTab(rejectedTab); // ✅ color update
+        setActiveTab(rejectedTab); // active top tab
     });
 }
 
