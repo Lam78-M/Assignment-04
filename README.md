@@ -19,9 +19,11 @@ It returns single element and null
 uses css select must use # and . 
  
  4) querySelectorAll() (selects all matching elements)
- Here (all matching elements) means that when we use many class property like this : <div class="hello">Islam<div>
-             <div class="hello">Islam<div>
-             <div class="hello">Islam<div>
+ Here (all matching elements) means that when we use many class property like this : 
+<div class="hello">Islam</div>
+<br>
+<div class="hello">Islam</div>
+<div class="hello">Islam</div>
         and we use querySelectorAll()  then querySelectorAll() find all the .hello class and give us = NodeList,
         It looks like array, we can use forEach() in querySelectorAll()
 
@@ -61,9 +63,10 @@ This upward movement of the event is called event bubbling
 
 <script>
 document.getElementById("parent").addEventListener("click", function() {
-  console.log("Parent clicked");
+console.log("Parent clicked");
 });
 
+<br>
 document.getElementById("child").addEventListener("click", function() {
   console.log("Button clicked");
 });
