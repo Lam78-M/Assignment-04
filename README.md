@@ -20,10 +20,13 @@ uses css select must use # and .
  
  4) querySelectorAll() (selects all matching elements)
  Here (all matching elements) means that when we use many class property like this : 
+```
 <div class="hello">Islam</div>
 <br>
 <div class="hello">Islam</div>
+<br>
 <div class="hello">Islam</div>
+```
         and we use querySelectorAll()  then querySelectorAll() find all the .hello class and give us = NodeList,
         It looks like array, we can use forEach() in querySelectorAll()
 
@@ -57,19 +60,50 @@ Event bubbling is a concept in javascript where an event starts from the targete
 In simple meaning , when an event happens suppose when we hava a <button> inside  a <div> if we click the button, the event first triggers on the button. Then in the same go ahead to parent <div>.
 After that, it continue moving up to <body>, <html>, and lastly to document.
 This upward movement of the event is called event bubbling
- <div id="parent">
-  <button id="child">Click Me</button>
+
+```
+<div id="hello">
+<button id="child">Click Here</button>
 </div>
 
+
 <script>
-document.getElementById("parent").addEventListener("click", function() {
+
+document.getElementById('hello').addEventListener('click', function() {
 console.log("Parent clicked");
 });
 
 <br>
-document.getElementById("child").addEventListener("click", function() {
+document.getElementById('child').addEventListener('click', function() {
   console.log("Button clicked");
 });
 </script>
 
-          
+```
+
+### 4. What is Event Delegation in JavaScript? Why is it useful?
+
+Event Delegation is a method where is, we can not use event listener to multiple child elements individually, we add a single event listener to their parent element and its works by event bubbling to handle events.
+
+When an event occurs on a child element, it first runs ont that element
+and then bubbles up to its parent . By using event delegation. we attach the event listener to the parent and which chil triggered the event.
+```
+<ul id="list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+```
+Here is ul and li. To call the li items we didnot use addEventListener every time. By using event delegation we use this method :
+  ```
+  ul.addEventListener("click", function(event) {
+   console.log(event.target.textContent);
+});
+  ```
+
+why ist useful:
+improve performance we use only one event Listener which is saves our memory.
+
+Works dynamically added elements : if we add new li its automatically added the li item.
+
+Clean and shorter code : few code, few problem.
