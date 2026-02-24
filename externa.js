@@ -1,4 +1,4 @@
-// ================= SELECTORS =================
+                      // all sector were called here ---------------------------
 
 const allTab = document.getElementById("allTab");
 const interviewTab = document.getElementById("interviewTab");
@@ -16,13 +16,13 @@ const tabButtons = document.getElementsByClassName("tabBtn");
 const totalJobs = cards.length;
 
 
-// ================= VARIABLES =================
+                 // variables using -------------------------
 
 let interview = 0;
 let rejected = 0;
 
 
-// ================= ACTIVE TAB FUNCTION =================
+                //   active tab section
 
 function setActiveTab(button){
     for(let i = 0; i < tabButtons.length; i++){
@@ -35,7 +35,7 @@ function setActiveTab(button){
 }
 
 
-// ================= UPDATE COUNT =================
+                        // update counting
 
 function updateCounts(){
     interviewCount.textContent = interview;
@@ -43,7 +43,7 @@ function updateCounts(){
 }
 
 
-// ================= UPDATE JOB COUNTER =================
+                            // update job counter -----------------------
 
 function updateJobCounter(){
     let visible = 0;
@@ -58,7 +58,7 @@ function updateJobCounter(){
 }
 
 
-// ================= SHOW EMPTY =================
+                       //  empty file creating ------------------------------
 
 function showEmpty(){
     let visible = 0;
@@ -77,7 +77,7 @@ function showEmpty(){
 }
 
 
-// ================= FILTER FUNCTION =================
+                             //filter function creating---------------------------
 
 function filterTab(type){
 
@@ -101,7 +101,7 @@ function filterTab(type){
 }
 
 
-// ================= INTERVIEW BUTTON =================
+                                       //    interview buttons ----------------
 
 let interviewBtns = document.getElementsByClassName("interviewBtn");
 
@@ -135,7 +135,7 @@ for(let i = 0; i < interviewBtns.length; i++){
 }
 
 
-// ================= REJECT BUTTON =================
+                                                // reject button using ------------------
 
 let rejectedBtns = document.getElementsByClassName("rejectedBtn");
 
@@ -167,9 +167,37 @@ for(let i = 0; i < rejectedBtns.length; i++){
         filterTab("rejected");
     });
 }
+                      // delete button  ----------------------
+
+let deleteBtns = document.getElementsByClassName("deleteBtn");
+
+for(let i = 0; i < deleteBtns.length; i++){
+
+    deleteBtns[i].addEventListener("click", function(){
+
+        let card = this.closest(".jobCard");
+        let currentStatus = card.getAttribute("data-status");
+
+                                                      //count adjusting processs -----------------------------
+        if(currentStatus === "interview"){
+            interview--;
+        }
+        else if(currentStatus === "rejected"){
+            rejected--;
+        }
 
 
-// ================= TAB EVENTS =================
+        card.remove();
+
+        updateCounts();
+        updateJobCounter();
+        showEmpty();
+    });
+}
+
+
+
+                   //tab events---------------------
 
 allTab.addEventListener("click", function(){
     setActiveTab(this);
@@ -187,7 +215,7 @@ rejectedTab.addEventListener("click", function(){
 });
 
 
-// ================= INITIAL LOAD =================
+           // Initial Loading--------------------------
 
 setActiveTab(allTab);
 filterTab("all");

@@ -20,10 +20,10 @@ uses css select must use # and .
  
  4) querySelectorAll() (selects all matching elements)
  Here (all matching elements) means that when we use many class property like this : <div class="hello">Islam<div>
-        <div class="hello">Islam<div>
-        <div class="hello">Islam<div>
+             <div class="hello">Islam<div>
+             <div class="hello">Islam<div>
         and we use querySelectorAll()  then querySelectorAll() find all the .hello class and give us = NodeList,
-        it looks like array, we can use forEach() in querySelectorAll()
+        It looks like array, we can use forEach() in querySelectorAll()
 
 Conclusion :  If selecting by ID → getElementById()
               If selecting multiple elements by class → querySelectorAll() (modern & flexible)
@@ -39,10 +39,34 @@ Create a element :
 
 let myCreate = document.createElement('h1');
 
+
+
 myCreate.textContent = 'hi, I am muslim'
 
 let something = document.getElementById('something')
 
 something.appendChild(myCreate);
+
+
+### 3. What is Event Bubbling? And how does it work?
+
+Event bubbling is a concept in javascript where an event starts from the targeted element (the element which was clicked or triggered) and then it prpagates bubbles and its goes forward to its elements in the (dom) tree.
+
+In simple meaning , when an event happens suppose when we hava a <button> inside  a <div> if we click the button, the event first triggers on the button. Then in the same go ahead to parent <div>.
+After that, it continue moving up to <body>, <html>, and lastly to document.
+This upward movement of the event is called event bubbling
+ <div id="parent">
+  <button id="child">Click Me</button>
+</div>
+
+<script>
+document.getElementById("parent").addEventListener("click", function() {
+  console.log("Parent clicked");
+});
+
+document.getElementById("child").addEventListener("click", function() {
+  console.log("Button clicked");
+});
+</script>
 
           
