@@ -107,3 +107,28 @@ improve performance we use only one event Listener which is saves our memory.
 Works dynamically added elements : if we add new li its automatically added the li item.
 
 Clean and shorter code : few code, few problem.
+
+### 5. What is the difference between preventDefault() and stopPropagation() methods?
+
+ 1) preventDefault()
+This stops browsers default behavior
+
+Example: 
+``` 1. When we click <a> tag then usually this tag open in  an another page 
+    2. When we submit <form> then page reloaded .
+ ```
+ But when we use this (event.preventDefault()          ) then the default browser action is stopped.
+
+ 2) stopPropagation()
+ The stopPropagation() method is use to stop the event form bubbling up to parent elements.
+ Normally, when an event works on a child element. It propagates (bubbles up) to its parent. By using:
+
+ event.stopPropagation():
+
+ By this method. The event will not move to parent elements.
+
+
+ Conclusion 
+ the main difference is :
+ . preventDefault() stops the brower's default action
+ . stopPropagation() stops the event from propagating (bubbling) to parent elements.
